@@ -21,6 +21,12 @@ public class ClienteRestController {
 
 	@Autowired
 	private ClienteService clienteService;
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deletar(@PathVariable Long id) {
+		clienteService.deletar(id);
+		return ResponseEntity.ok().build();
+	}
 
 	@GetMapping
 	public ResponseEntity<Iterable<Cliente>> buscarTodos() {
@@ -44,9 +50,4 @@ public class ClienteRestController {
 		return ResponseEntity.ok(cliente);
 	}
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deletar(@PathVariable Long id) {
-		clienteService.deletar(id);
-		return ResponseEntity.ok().build();
-	}
 }
